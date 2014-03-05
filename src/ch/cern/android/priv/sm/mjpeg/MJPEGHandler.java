@@ -47,7 +47,7 @@ public class MJPEGHandler extends HttpHandler {
                     "Connection: keep-alive\r\n\r\n").getBytes());
 
             int prevHash = 0;
-            Speed speed = new Speed();
+            // Speed speed = new Speed();
             // Timer timer = new Timer();
             while (!isInterrupted()) {
 
@@ -86,7 +86,7 @@ public class MJPEGHandler extends HttpHandler {
 
                     // send single JPEG
                     // timer.reset("send");
-                    speed.reset();
+                    // speed.reset();
                     os.write(("--" + boundary + "\r\n" +
                             "Content-type: image/jpeg\r\n" +
                             "Content-Length: " + imageData.length +
@@ -95,7 +95,7 @@ public class MJPEGHandler extends HttpHandler {
                     os.write(("\r\n").getBytes());
                     os.flush();
                     // timer.stop("send");
-                    speed.print(imageData.length);
+                    // speed.print(imageData.length);
                 }
             }
             getSock().close();
@@ -104,6 +104,7 @@ public class MJPEGHandler extends HttpHandler {
         }
     }
 
+    @SuppressWarnings("unused")
     private class Timer {
         private Map<String, Long> mTimers;
 
@@ -124,6 +125,7 @@ public class MJPEGHandler extends HttpHandler {
         }
     }
 
+    @SuppressWarnings("unused")
     private class Speed {
         private long mSpeedStart;
 
