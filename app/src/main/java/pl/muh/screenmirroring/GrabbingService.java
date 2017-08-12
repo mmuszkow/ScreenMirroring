@@ -35,9 +35,7 @@ public class GrabbingService extends Service {
             }
             proc = Runtime.getRuntime().exec(
                     "su -c setenforce 0");
-            if (proc.waitFor() != 0) {
-                throw new IOException("setenforce failed");
-            }
+            proc.waitFor();
 
             // start server
             Resources res = getApplicationContext().getResources();
